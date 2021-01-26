@@ -59,21 +59,25 @@ typedef struct DBusMessageIter DBusMessageIter;
  * DBusMessageIter struct; contains no public fields. 
  */
 struct DBusMessageIter
-{ 
+{
   void *dummy1;         /**< Don't use this */
   void *dummy2;         /**< Don't use this */
-  dbus_uint32_t dummy3; /**< Don't use this */
-  int dummy4;           /**< Don't use this */
-  int dummy5;           /**< Don't use this */
-  int dummy6;           /**< Don't use this */
+  void *dummy3;         /**< Don't use this */
+  void *dummy4;         /**< Don't use this */
+  dbus_uint32_t dummy5; /**< Don't use this */
+  dbus_uint32_t dummy6; /**< Don't use this */
   int dummy7;           /**< Don't use this */
   int dummy8;           /**< Don't use this */
   int dummy9;           /**< Don't use this */
-  int dummy10;          /**< Don't use this */
-  int dummy11;          /**< Don't use this */
+
+  // on the RISC-V cheri platform we have 96*4=384 bits padding
+  // on a normal 64-bit platform we have 4*32=128 bits padding
   int pad1;             /**< Don't use this */
-  void *pad2;           /**< Don't use this */
-  void *pad3;           /**< Don't use this */
+  int pad2;             /**< Don't use this */
+  int pad3;             /**< Don't use this */
+  void *pad4;           /**< Don't use this */
+  void *pad5;           /**< Don't use this */
+  void *pad6;           /**< Don't use this */
 };
 
 /**
@@ -84,18 +88,19 @@ struct DBusMessageIter
 { \
   NULL, /* dummy1 */ \
   NULL, /* dummy2 */ \
-  0, /* dummy3 */ \
-  0, /* dummy4 */ \
+  NULL, /* dummy3 */ \
+  NULL, /* dummy4 */ \
   0, /* dummy5 */ \
   0, /* dummy6 */ \
   0, /* dummy7 */ \
   0, /* dummy8 */ \
   0, /* dummy9 */ \
-  0, /* dummy10 */ \
-  0, /* dummy11 */ \
   0, /* pad1 */ \
-  NULL, /* pad2 */ \
-  NULL /* pad3 */ \
+  0, /* pad2 */ \
+  0, /* pad3 */ \
+  NULL, /* pad4 */ \
+  NULL, /* pad5 */ \
+  NULL /* pad6 */ \
 }
 
 DBUS_EXPORT
