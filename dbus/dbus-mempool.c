@@ -91,6 +91,8 @@ struct DBusMemBlock
   /* this is a long so that "elements" is aligned */
   long used_so_far;     /**< bytes of this block already allocated as elements. */
   
+  long dummy; /**< ensure alignment also on 128 bit platforms */
+
   unsigned char elements[ELEMENT_PADDING]; /**< the block data, actually allocated to required size */
 };
 
