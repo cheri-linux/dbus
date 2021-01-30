@@ -149,8 +149,8 @@ _dbus_mem_pool_new (int element_size,
     return NULL;
 
   /* Make the element size at least 8 bytes. */
-  if (element_size < 8)
-    element_size = 8;
+  if (element_size < sizeof(void*))
+    element_size = sizeof(void*);
   
   /* these assertions are equivalent but the first is more clear
    * to programmers that see it fail.
